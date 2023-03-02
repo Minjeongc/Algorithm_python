@@ -10,14 +10,11 @@ def bubbleSort(num,n):
                 temp = num[j] 
                 num[j] = num[j+1]
                 num[j+1] = temp
+        print(num)
                 
 if __name__=="__main__":
-    num = []
-    n = int(input())
-    num = [int(input()) for _ in range(n)]
     
+    num = list(map(int, input().split()))
+    n = len(num)
     bubbleSort(num,n)
-    for i in num:
-        print(i)
-
 
