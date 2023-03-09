@@ -33,6 +33,16 @@ def dfs_recursive(graph, start, visited= []):
             dfs_recursive(graph, node, visited)
     return visited 
 
+#재귀함수 및  방문정보 이용
+def dfs_recursive2(graph, n, visited):
+    visited[n] = True
+    print(n, end = " ")
+    for i in graph[n]:
+        if not visited[i]:
+            dfs_recursive2(graph, i, visited)
+        
+        
+
 graph = dict()
  
 graph['A'] = ['B', 'C']
@@ -46,6 +56,20 @@ graph['H'] = ['C']
 graph['I'] = ['C', 'J']
 graph['J'] = ['I']
 
+graph2 =[
+  [], # 노드번호가 1부터 시작하기 때문에 0은 비우기.
+  [2,3,8], 
+  [1,7],
+  [1,4,5],
+  [3,5],
+  [3,4],
+  [7],
+  [2,6,8],
+  [1,7]
+]
 print("리스트로 구현", dfs_list(graph, 'A'))
 print("deque로 구현", dfs_deque(graph,'A')) 
 print("재귀함수로 구현", dfs_recursive(graph, 'A'))
+
+visited = [False]*(8+1)
+dfs_recursive2(graph2,1,visited)

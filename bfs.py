@@ -1,3 +1,5 @@
+from collections import deque
+
 def bfs(graph, start_node):
     need_visited, visited = [] , []
     need_visited.append(start_node)
@@ -10,6 +12,19 @@ def bfs(graph, start_node):
             need_visited.extend(graph[node])
     
     return visited 
+
+def bfs_recursive(graph, start, visited):
+    que = deque([start])
+    visited[start] = True
+    while que:
+        v = que.popleft()
+        print(v, end = " ")
+        for i in graph[v]:
+            if not visited[i]:
+                que.append(i)
+                visited[i] = True
+
+
 graph = dict()
  
 graph['A'] = ['B', 'C']
